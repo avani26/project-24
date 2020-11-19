@@ -14,7 +14,7 @@ function preload()
 }
 
 function setup() {
-	createCanvas(800, 700);
+	createCanvas(1000, 700);
   	engine = Engine.create();
 	world = engine.world;
 	
@@ -41,17 +41,23 @@ function setup() {
 
 function keyPressed(){
 	if(keyCode === 32){
-		Matter.Body.applyForce(ball.body,ball.body.position,{x:600,y:630});
+		Matter.Body.applyForce(ball.body,ball.body.position,{x:0.5,y:0.5});
+		if(ball.body.position.y===550){
+			ball.body.options={
+				isStatic:true
+			}	
+		}
 	}
 }
 
 
 function draw() {
   rectMode(CENTER);
-  background(0);
+  background("white");
   
   ball.display();
   keyPressed();
+  
   
   drawSprites();
  
